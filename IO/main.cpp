@@ -13,11 +13,10 @@ int main(int argc, char ** argv)
 	fstream plik;
 	plik.open(argv[1], std::ios::in | std::ios::out);
 
-	string check_cite;
+	string sprawdz_cite;
 	char znak;
 
 	string slowo;
-	string cite;
 
 	
 	vector<string> lista;
@@ -33,10 +32,10 @@ int main(int argc, char ** argv)
 				for (int i = 0; i < 4; i++)
 				{
 					plik >> znak;
-					check_cite += znak;
+					sprawdz_cite += znak;
 				}
 
-				if (check_cite.compare("cite")==0)
+				if (sprawdz_cite.compare("cite")==0)
 				{
 					plik >> znak;
 
@@ -56,9 +55,9 @@ int main(int argc, char ** argv)
 					
 
 					slowo.clear();
-					check_cite.clear();
+					sprawdz_cite.clear();
 				}
-				check_cite.clear();
+				sprawdz_cite.clear();
 			}
 		}
 

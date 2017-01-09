@@ -18,7 +18,6 @@ int main(int argc, char ** argv)
 
 	string word;
 
-	
 	vector<string> cite_list;
 	while (!file.eof())
 	{

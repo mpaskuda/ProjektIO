@@ -10,61 +10,61 @@ using namespace std;
 int main(int argc, char ** argv)
 {
 	cout << argv[1];
-	fstream plik;
-	plik.open(argv[1], std::ios::in | std::ios::out);
+	fstream file;
+	file.open(argv[1], std::ios::in | std::ios::out);
 
-	string sprawdz_cite;
-	char znak;
+	string check_cite;
+	char character;
 
-	string slowo;
+	string word;
 
 	
-	vector<string> lista;
-	while (!plik.eof())
+	vector<string> cite_list;
+	while (!file.eof())
 	{
 
-		plik >> znak;
-		if (znak == '~')
+		file >> character;
+		if (character == '~')
 		{
-			plik >> znak;
-			if (znak == '\\')
+			file >> character;
+			if (character == '\\')
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					plik >> znak;
-					sprawdz_cite += znak;
+					file >> character;
+					check_cite += character;
 				}
 
-				if (sprawdz_cite.compare("cite")==0)
+				if (check_cite.compare("cite")==0)
 				{
-					plik >> znak;
+					file >> character;
 
 					do
 					{
-						plik >> znak;
-						if (znak != '}')slowo += znak;
+						file >> character;
+						if (character != '}')word += character;
 
-					} while (znak != '}');
+					} while (character != '}');
 
-					istringstream iss(slowo);
+					istringstream iss(word);
 					string token;
 					while (getline(iss, token, ','))
 					{
-						lista.push_back(token);
+						cite_list.push_back(token);
 					}
 					
 
-					slowo.clear();
-					sprawdz_cite.clear();
+					word.clear();
+					check_cite.clear();
 				}
-				sprawdz_cite.clear();
+				check_cite.clear();
 			}
 		}
 
 	}
 
 
-	plik.close();
+	file.close();
 
 
 
